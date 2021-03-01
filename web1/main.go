@@ -2,7 +2,7 @@ package main
 
 import (
 	"net/http"
-	"web1/myapp"
+	"tucker/web1/myapp"
 )
 
 func main() {

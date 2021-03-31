@@ -52,7 +52,7 @@ func TestCreateUserInfo(t *testing.T) {
 	defer ts.Close()
 
 	resp, err := http.Post(ts.URL+"/users", "application/json",
-		strings.NewReader(`{"first_name":"tucker","last_name":"kim","email":"whdals0119@naver.com"}`))
+		strings.NewReader(`{"first_name":"choi","last_name":"jongmin","email":"whdals0119@naver.com"}`))
 	assert.NoError(err)
 	assert.Equal(http.StatusCreated, resp.StatusCode)
 
@@ -69,6 +69,6 @@ func TestCreateUserInfo(t *testing.T) {
 	user2 := new(User)
 	err = json.NewDecoder(resp.Body).Decode(user2)
 	assert.NoError(err)
-	assert.NotEqual(user.ID, user2.ID)
-	assert.NotEqual(user.FirstName, user2.FirstName)
+	assert.Equal(user.ID, user2.ID)
+	assert.Equal(user.FirstName, user2.FirstName)
 }
